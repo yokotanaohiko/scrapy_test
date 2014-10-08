@@ -36,6 +36,7 @@ class BingSpider(Spider) :
             item['query']=query
             title = " ".join(result.xpath(".//h2/a//text()").extract())
             title=title.replace('- Wikipedia','').replace('…','').replace('...','')
+            title=title.replace(' ','').replace(',','')
             item['title']=title.encode('utf-8')
             item['rank']=self.rank
             items.append(item)
